@@ -1,0 +1,41 @@
+const posts = [];
+
+function createPost(title) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      posts.push({ title: title });
+      console.log(`Post Created: ${title}`);
+      resolve();
+    }, 2000);
+  });
+}
+
+function updateLastUserActivityTime() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('Last activity time updated');
+      resolve();
+    }, 1000);
+  });
+}
+
+function deletePost() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (posts.length > 0) {
+        const poppedElement = posts.pop();
+        console.log(`Post Deleted: ${poppedElement.title}`);
+        resolve(poppedElement);
+      } else {
+        reject('ERROR: ARRAY IS EMPTY');
+      }
+    }, 1000);
+  });
+}
+
+function getColdDrinks() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('Got cold drinks');
+      resolve();
+    }, 1500);
